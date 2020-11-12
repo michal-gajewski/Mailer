@@ -1,4 +1,4 @@
-﻿namespace Database.Enumerations
+﻿namespace Domain.Enumerations
 {
     public enum EmailStatus
     {
