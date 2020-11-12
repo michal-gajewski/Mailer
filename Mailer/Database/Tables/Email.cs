@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Database.Enumerations;
+using System.Collections.Generic;
 
 namespace Database.Tables
 {
@@ -8,6 +9,7 @@ namespace Database.Tables
         public string Text { get; set; }
         public string Title { get; set; }
         public string Sender { get; set; }
+        public EmailStatus Status { get; set; }
         public ICollection<EmailRecipient> Recipients { get; set; }
     }
 }
