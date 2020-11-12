@@ -1,11 +1,7 @@
-﻿using DataAccess.Commands;
+﻿using Domain.Commands;
 using Domain.Services;
 using Moq;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace Domain.Tests
 {
@@ -14,13 +10,15 @@ namespace Domain.Tests
     {
         private IEmailService _emailService;
         private Mock<IAddEmailCommandHandler> _addEmailCommandHandler;
+        private Mock<IAddRecipientCommandHandler> _addRecipientCommandHandler;
 
         [SetUp]
         public void SetUp()
         {
             _addEmailCommandHandler = new Mock<IAddEmailCommandHandler>();
+            _addRecipientCommandHandler = new Mock<IAddRecipientCommandHandler>();
 
-            _emailService = new EmailService(_addEmailCommandHandler.Object);
+            _emailService = new EmailService(_addEmailCommandHandler.Object, _addRecipientCommandHandler.Object);
         }
 
         [TestCase(null)]

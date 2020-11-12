@@ -1,6 +1,6 @@
-﻿using DataAccess.Commands;
-using Database;
+﻿using Database;
 using Database.Tables;
+using Domain.Commands;
 using System.Linq;
 
 namespace DataAccess.CommandsHandlers

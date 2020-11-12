@@ -1,5 +1,5 @@
-﻿using DataAccess.Commands;
-using Domain.Commands;
+﻿using Domain.Commands;
+using Domain.Exceptions;
 using Domain.Validators;
 using System.Linq;
 
@@ -13,10 +13,12 @@ namespace Domain.Services
     public class EmailService : IEmailService
     {
         private readonly IAddEmailCommandHandler _addEmailCommandHandler;
+        private readonly IAddRecipientCommandHandler _addRecipientCommandHandler;
 
-        public EmailService(IAddEmailCommandHandler addEmailCommandHandler)
+        public EmailService(IAddEmailCommandHandler addEmailCommandHandler, IAddRecipientCommandHandler addRecipientCommandHandler)
         {
             _addEmailCommandHandler = addEmailCommandHandler;
+            _addRecipientCommandHandler = addRecipientCommandHandler;
         }
 
         public CommandResult CreateEmail(string text, string title, string sender, string[] recipients)
@@ -34,6 +36,19 @@ namespace Domain.Services
             else
             {
                 return new CommandFailedResult(result.Errors);
+            }
+        }
+
+        public CommandResult AddRecipient(int emailId, string recipient)
+        {
+            try
+            {
+                _addRecipientCommandHandler.Handle(new AddRecipientCommand(emailId, recipient));
+                return new SuccessfulCommandResult();
+            }
+            catch (EmailNotExistException)
+            {
+                return new CommandFailedResult("Email does not exists");
             }
         }
     }

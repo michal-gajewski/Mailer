@@ -1,4 +1,4 @@
-﻿namespace DataAccess.Commands
+﻿namespace Domain.Commands
 {
     public class AddEmailCommand
     {

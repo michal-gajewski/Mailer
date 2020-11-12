@@ -1,4 +1,4 @@
-﻿using DataAccess.Commands;
+﻿using Domain.Commands;
 using FluentValidation;
 
 namespace Domain.Validators
