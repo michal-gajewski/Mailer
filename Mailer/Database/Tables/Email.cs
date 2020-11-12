@@ -1,4 +1,4 @@
-﻿using Database.Enumerations;
+﻿using Domain.Enumerations;
 using System.Collections.Generic;
 
 namespace Database.Tables

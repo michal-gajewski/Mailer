@@ -1,6 +1,7 @@
 ﻿using Database;
 using Database.Tables;
 using Domain.Commands;
+using Domain.Enumerations;
 using System.Linq;
 
 namespace DataAccess.CommandsHandlers
@@ -20,7 +21,7 @@ namespace DataAccess.CommandsHandlers
             {
                 Title = command.Title,
                 Text = command.Text,
-                Status = Database.Enumerations.EmailStatus.PENDING,
+                Status = EmailStatus.PENDING,
                 Recipients = command.Recipients.Select(r => new EmailRecipient { Address = r }).ToList()
             });
 
