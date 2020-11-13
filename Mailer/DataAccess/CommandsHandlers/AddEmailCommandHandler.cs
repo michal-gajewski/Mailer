@@ -12,7 +12,7 @@ namespace DataAccess.CommandsHandlers
 
         public AddEmailCommandHandler(MailerDbContext context)
         {
-            this._context = context;
+            _context = context;
         }
 
         public void Handle(AddEmailCommand command)
@@ -22,8 +22,9 @@ namespace DataAccess.CommandsHandlers
                 Title = command.Title,
                 Text = command.Text,
                 Status = EmailStatus.PENDING,
-                Recipients = command.Recipients != null ? command.Recipients.Select(r => new EmailRecipient { Address = r }).ToList() : null
-            }); ;
+                Sender = command.Sender,
+                Recipients = command.Recipients.Select(r => new EmailRecipient { Address = r }).ToList()
+            });
 
             _context.SaveChanges();
         }

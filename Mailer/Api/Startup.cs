@@ -1,3 +1,5 @@
+using Application;
+using BackgroundWorker;
 using DataAccess.CommandsHandlers;
 using DataAccess.QueriesHandlers;
 using Database;
@@ -9,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using Microsoft.Extensions.Hosting;
 
 namespace Api
@@ -32,9 +35,15 @@ namespace Api
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IAddEmailCommandHandler, AddEmailCommandHandler>();
             services.AddTransient<IAddRecipientCommandHandler, AddRecipientCommandHandler>();
+            services.AddTransient<IMarkEmailAsSentCommandHandler, MarkEmailAsSentCommandHandler>();
             services.AddTransient<IGetEmailsQueryHandler, GetEmailsQueryHandler>();
             services.AddTransient<IGetEmailStatusQueryHandler, GetEmailStatusQueryHandler>();
             services.AddTransient<IGetEmailQueryHandler, GetEmailQueryHandler>();
+            services.AddTransient<IGetPendingEmailsQueryHandler, GetPendingEmailsQueryHandler>();
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<ISmtpClient, SmtpClient>();
+            services.AddHostedService<QueuedHostedService>();
+            services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

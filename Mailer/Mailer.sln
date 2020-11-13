@@ -3,17 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{3FBBBE5D-FF44-4FBA-A455-8EA9CF295022}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Database.csproj", "{3FBBBE5D-FF44-4FBA-A455-8EA9CF295022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{C530B9BE-0BE7-4244-96F0-1D0441CA072C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{C530B9BE-0BE7-4244-96F0-1D0441CA072C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{45012EC0-9736-41EC-B0BD-06596FB5D64C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{45012EC0-9736-41EC-B0BD-06596FB5D64C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{52DA9395-9E9A-4C0A-A100-79C4EB248C66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{52DA9395-9E9A-4C0A-A100-79C4EB248C66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests", "Domain.Tests\Domain.Tests.csproj", "{DF612DAD-7ED0-4F7E-B4D0-13052DD46554}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Tests", "Domain.Tests\Domain.Tests.csproj", "{DF612DAD-7ED0-4F7E-B4D0-13052DD46554}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{D1AAE91F-0456-4D74-BB47-7D89F54994C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{D1AAE91F-0456-4D74-BB47-7D89F54994C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackgroundWorker", "BackgroundWorker\BackgroundWorker.csproj", "{CABA0D2F-A5FD-420D-80BD-4B7FEBE98055}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{FCE59672-E8AB-4942-A76D-3F5E7D7D5974}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests", "Application.Tests\Application.Tests.csproj", "{149AF3CE-C0F9-443F-91AE-7A96EBCF02DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{D1AAE91F-0456-4D74-BB47-7D89F54994C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1AAE91F-0456-4D74-BB47-7D89F54994C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1AAE91F-0456-4D74-BB47-7D89F54994C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CABA0D2F-A5FD-420D-80BD-4B7FEBE98055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CABA0D2F-A5FD-420D-80BD-4B7FEBE98055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CABA0D2F-A5FD-420D-80BD-4B7FEBE98055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CABA0D2F-A5FD-420D-80BD-4B7FEBE98055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCE59672-E8AB-4942-A76D-3F5E7D7D5974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCE59672-E8AB-4942-A76D-3F5E7D7D5974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCE59672-E8AB-4942-A76D-3F5E7D7D5974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCE59672-E8AB-4942-A76D-3F5E7D7D5974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{149AF3CE-C0F9-443F-91AE-7A96EBCF02DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{149AF3CE-C0F9-443F-91AE-7A96EBCF02DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{149AF3CE-C0F9-443F-91AE-7A96EBCF02DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{149AF3CE-C0F9-443F-91AE-7A96EBCF02DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

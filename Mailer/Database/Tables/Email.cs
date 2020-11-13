@@ -10,6 +10,6 @@ namespace Database.Tables
         public string Title { get; set; }
         public string Sender { get; set; }
         public EmailStatus Status { get; set; }
-        public ICollection<EmailRecipient> Recipients { get; set; }
+        public virtual ICollection<EmailRecipient> Recipients { get; set; }
     }
 }
