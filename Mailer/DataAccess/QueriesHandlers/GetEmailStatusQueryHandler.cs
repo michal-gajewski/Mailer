@@ -1,6 +1,6 @@
 ﻿using Database;
-using Domain.Enumerations;
 using Domain.Queries;
+using Infrastructure.DTOs.Enumerations;
 using System.Linq;
 
 namespace DataAccess.QueriesHandlers

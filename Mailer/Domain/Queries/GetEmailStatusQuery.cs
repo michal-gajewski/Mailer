@@ -1,7 +1,4 @@
-﻿using Domain.Enumerations;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Infrastructure.DTOs.Enumerations;
 
 namespace Domain.Queries
 {

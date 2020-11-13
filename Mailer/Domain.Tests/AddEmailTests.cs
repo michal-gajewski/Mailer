@@ -1,4 +1,5 @@
 ﻿using Domain.Commands;
+using Domain.Queries;
 using Domain.Services;
 using Moq;
 using NUnit.Framework;
@@ -11,14 +12,16 @@ namespace Domain.Tests
         private IEmailService _emailService;
         private Mock<IAddEmailCommandHandler> _addEmailCommandHandler;
         private Mock<IAddRecipientCommandHandler> _addRecipientCommandHandler;
+        private Mock<IGetEmailsQueryHandler> _addGetEmailsQueryHandler;
 
         [SetUp]
         public void SetUp()
         {
             _addEmailCommandHandler = new Mock<IAddEmailCommandHandler>();
             _addRecipientCommandHandler = new Mock<IAddRecipientCommandHandler>();
+            _addGetEmailsQueryHandler = new Mock<IGetEmailsQueryHandler>();
 
-            _emailService = new EmailService(_addEmailCommandHandler.Object, _addRecipientCommandHandler.Object);
+            _emailService = new EmailService(_addEmailCommandHandler.Object, _addRecipientCommandHandler.Object, _addGetEmailsQueryHandler.Object);
         }
 
         [TestCase(null)]

@@ -1,4 +1,4 @@
-﻿namespace Domain.Enumerations
+﻿namespace Infrastructure.DTOs.Enumerations
 {
     public enum EmailStatus
     {
