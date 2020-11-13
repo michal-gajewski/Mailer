@@ -4,12 +4,12 @@ namespace Domain.Queries
 {
     public class GetEmailStatusQuery
     {
-        public GetEmailStatusQuery(int emailId)
+        public GetEmailStatusQuery(long emailId)
         {
             EmailId = emailId;
         }
 
-        public int EmailId { get; }
+        public long EmailId { get; }
     }
 
     public interface IGetEmailStatusQueryHandler

@@ -3,7 +3,7 @@ using Domain.Exceptions;
 using Domain.Queries;
 using Domain.Validators;
 using Infrastructure.DTOs;
-using System.Collections;
+using Infrastructure.DTOs.Enumerations;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,9 +13,13 @@ namespace Domain.Services
     {
         CommandResult CreateEmail(string text, string title, string sender, string[] recipients);
 
-        CommandResult AddRecipient(int emailId, string recipient);
+        CommandResult AddRecipient(long emailId, string recipient);
 
         IEnumerable<EmailDto> GetEmails();
+
+        EmailStatus GetEmailStatus(long emailId);
+
+        EmailDto GetEmail(long emailId);
     }
 
     public class EmailService : IEmailService
@@ -23,14 +27,20 @@ namespace Domain.Services
         private readonly IAddEmailCommandHandler _addEmailCommandHandler;
         private readonly IAddRecipientCommandHandler _addRecipientCommandHandler;
         private readonly IGetEmailsQueryHandler _getEmailsQueryHandler;
+        private readonly IGetEmailStatusQueryHandler _getEmailStatusQueryHandler;
+        private readonly IGetEmailQueryHandler _getEmailQueryHandler;
 
         public EmailService(IAddEmailCommandHandler addEmailCommandHandler,
             IAddRecipientCommandHandler addRecipientCommandHandler,
-            IGetEmailsQueryHandler getEmailsQueryHandler)
+            IGetEmailsQueryHandler getEmailsQueryHandler,
+            IGetEmailStatusQueryHandler getEmailStatusQueryHandler,
+            IGetEmailQueryHandler getEmailQueryHandler)
         {
             _addEmailCommandHandler = addEmailCommandHandler;
             _addRecipientCommandHandler = addRecipientCommandHandler;
             _getEmailsQueryHandler = getEmailsQueryHandler;
+            _getEmailStatusQueryHandler = getEmailStatusQueryHandler;
+            _getEmailQueryHandler = getEmailQueryHandler;
         }
 
         public CommandResult CreateEmail(string text, string title, string sender, string[] recipients)
@@ -51,7 +61,7 @@ namespace Domain.Services
             }
         }
 
-        public CommandResult AddRecipient(int emailId, string recipient)
+        public CommandResult AddRecipient(long emailId, string recipient)
         {
             try
             {
@@ -76,8 +86,31 @@ namespace Domain.Services
                     Status = e.Status,
                     Text = e.Text,
                     Title = e.Title,
-                    Recipients = e.Recipients != null ? e.Recipients.Select(r => new EmailRecipientDto { Id = r.Id, Address = r.Address }) : null
+                    Recipients = e.Recipients.Select(r => new EmailRecipientDto { Id = r.Id, Address = r.Address })
                 });
+        }
+
+        public EmailStatus GetEmailStatus(long emailId)
+        {
+            return _getEmailStatusQueryHandler.Handle(new GetEmailStatusQuery(emailId));
+        }
+
+        public EmailDto GetEmail(long emailId)
+        {
+            var email = _getEmailQueryHandler.Handle(new GetEmailQuery(emailId));
+
+            if (email == null)
+                return null;
+
+            return new EmailDto
+            {
+                Id = email.Id,
+                Sender = email.Sender,
+                Status = email.Status,
+                Text = email.Text,
+                Title = email.Title,
+                Recipients = email.Recipients.Select(r => new EmailRecipientDto { Id = r.Id, Address = r.Address })
+            };
         }
     }
 }

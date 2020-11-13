@@ -33,6 +33,8 @@ namespace Api
             services.AddTransient<IAddEmailCommandHandler, AddEmailCommandHandler>();
             services.AddTransient<IAddRecipientCommandHandler, AddRecipientCommandHandler>();
             services.AddTransient<IGetEmailsQueryHandler, GetEmailsQueryHandler>();
+            services.AddTransient<IGetEmailStatusQueryHandler, GetEmailStatusQueryHandler>();
+            services.AddTransient<IGetEmailQueryHandler, GetEmailQueryHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

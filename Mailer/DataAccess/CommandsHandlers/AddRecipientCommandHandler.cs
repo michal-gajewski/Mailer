@@ -2,7 +2,7 @@
 using Database.Tables;
 using Domain.Commands;
 using Domain.Exceptions;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace DataAccess.CommandsHandlers
@@ -18,11 +18,13 @@ namespace DataAccess.CommandsHandlers
 
         public void Handle(AddRecipientCommand command)
         {
-            var email = _context.Emails.FirstOrDefault(e => e.Id == command.EmailId);
+            var email = _context.Emails.Include(e => e.Recipients).FirstOrDefault(e => e.Id == command.EmailId);
             if (email == null)
                 throw new EmailNotExistException();
+            var newRecipient = new EmailRecipient { Address = command.Recipient };
+            //added only because of inmemory database use
+            email.Recipients.Add(newRecipient);
 
-            _context.EmailRecipients.Add(new EmailRecipient { Email = email, Address = command.Recipient });
             _context.SaveChanges();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Database;
 using Database.Tables;
 using Domain.Queries;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace DataAccess.QueriesHandlers
@@ -16,7 +17,7 @@ namespace DataAccess.QueriesHandlers
 
         public IEnumerable<Email> Handle(GetEmailsQuery query)
         {
-            return _mailerDbContext.Emails;
+            return _mailerDbContext.Emails.Include(e => e.Recipients);
         }
     }
 }

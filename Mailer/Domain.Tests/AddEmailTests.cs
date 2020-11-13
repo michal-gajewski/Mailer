@@ -13,6 +13,8 @@ namespace Domain.Tests
         private Mock<IAddEmailCommandHandler> _addEmailCommandHandler;
         private Mock<IAddRecipientCommandHandler> _addRecipientCommandHandler;
         private Mock<IGetEmailsQueryHandler> _addGetEmailsQueryHandler;
+        private Mock<IGetEmailStatusQueryHandler> _getEmailStatusQueryHandler;
+        private Mock<IGetEmailQueryHandler> _getEmailStatusHandler;
 
         [SetUp]
         public void SetUp()
@@ -20,8 +22,10 @@ namespace Domain.Tests
             _addEmailCommandHandler = new Mock<IAddEmailCommandHandler>();
             _addRecipientCommandHandler = new Mock<IAddRecipientCommandHandler>();
             _addGetEmailsQueryHandler = new Mock<IGetEmailsQueryHandler>();
+            _getEmailStatusQueryHandler = new Mock<IGetEmailStatusQueryHandler>();
+            _getEmailStatusHandler = new Mock<IGetEmailQueryHandler>();
 
-            _emailService = new EmailService(_addEmailCommandHandler.Object, _addRecipientCommandHandler.Object, _addGetEmailsQueryHandler.Object);
+            _emailService = new EmailService(_addEmailCommandHandler.Object, _addRecipientCommandHandler.Object, _addGetEmailsQueryHandler.Object, _getEmailStatusQueryHandler.Object, _getEmailStatusHandler.Object);
         }
 
         [TestCase(null)]

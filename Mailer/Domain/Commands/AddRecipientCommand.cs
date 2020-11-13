@@ -2,13 +2,13 @@
 {
     public class AddRecipientCommand
     {
-        public AddRecipientCommand(int emailId, string recipient)
+        public AddRecipientCommand(long emailId, string recipient)
         {
             EmailId = emailId;
             Recipient = recipient;
         }
 
-        public int EmailId { get; }
+        public long EmailId { get; }
         public string Recipient { get; }
     }
 
