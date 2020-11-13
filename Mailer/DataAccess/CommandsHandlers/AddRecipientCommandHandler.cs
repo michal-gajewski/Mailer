@@ -22,7 +22,7 @@ namespace DataAccess.CommandsHandlers
             if (email == null)
                 throw new EmailNotExistException();
             var newRecipient = new EmailRecipient { Address = command.Recipient };
-            //added only because of inmemory database use
+
             email.Recipients.Add(newRecipient);
 
             _context.SaveChanges();
