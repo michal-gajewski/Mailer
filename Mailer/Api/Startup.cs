@@ -27,6 +27,8 @@ namespace Api
         {
             services.AddControllers();
             services.AddDbContext<MailerDbContext>(options => options.UseInMemoryDatabase(databaseName: "Mailer"));
+            services.AddSwaggerGen();
+
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IAddEmailCommandHandler, AddEmailCommandHandler>();
             services.AddTransient<IAddRecipientCommandHandler, AddRecipientCommandHandler>();
@@ -40,6 +42,12 @@ namespace Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseHttpsRedirection();
 
